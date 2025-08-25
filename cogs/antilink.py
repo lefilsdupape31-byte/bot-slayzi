@@ -5,7 +5,6 @@ import re
 class AntiLink(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        # Dictionnaire pour stocker l'état de l'antilink par serveur
         self.antilink_enabled = {}
 
     @commands.command(name="antilink")
@@ -16,19 +15,23 @@ class AntiLink(commands.Cog):
         new_state = not current_state
         self.antilink_enabled[guild_id] = new_state
 
+        print(f"Antilink state: {self.antilink_enabled}")  # Debug print
+
         status = "ON ✅" if new_state else "OFF ❌"
         await ctx.send(f"Antilink {status}")
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        print(f"Message reçu : {message.content}")  # Debug print
+
         if message.author.bot:
             return
 
         guild_id = message.guild.id if message.guild else None
 
         if guild_id and self.antilink_enabled.get(guild_id, False):
-            # Expression régulière pour détecter les liens
-            if re.search(r"(https?://|www\.)", message.content, re.IGNORECASE):
+            if re.search(r"(https?://|www\\.)", message.content, re.IGNORECASE):
+                print("Lien détecté")  # Debug print
                 try:
                     await message.delete()
                     await message.channel.send(f"{message.author.mention}, les liens ne sont pas autorisés ici. 🚫", delete_after=5)
@@ -37,7 +40,6 @@ class AntiLink(commands.Cog):
                 except discord.HTTPException:
                     print("Erreur lors de la suppression d'un message.")
 
-        # Ne pas oublier de traiter les commandes
         await self.bot.process_commands(message)
 
 async def setup(bot):
