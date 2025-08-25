@@ -15,14 +15,14 @@ class AntiLink(commands.Cog):
         new_state = not current_state
         self.antilink_enabled[guild_id] = new_state
 
-        print(f"Antilink state: {self.antilink_enabled}")  # Debug print
+        print(f"Antilink state: {self.antilink_enabled}")  # Debug
 
         status = "ON ✅" if new_state else "OFF ❌"
         await ctx.send(f"Antilink {status}")
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        print(f"Message reçu : {message.content}")  # Debug print
+        print(f"Message reçu : {message.content}")  # Debug
 
         if message.author.bot:
             return
@@ -30,11 +30,14 @@ class AntiLink(commands.Cog):
         guild_id = message.guild.id if message.guild else None
 
         if guild_id and self.antilink_enabled.get(guild_id, False):
-            if re.search(r"(https?://|www\\.)", message.content, re.IGNORECASE):
-                print("Lien détecté")  # Debug print
+            # Expression régulière pour détecter tous les liens + discord.gg
+            if re.search(r"(https?://|www\\.|discord\\.gg/)", message.content, re.IGNORECASE):
+                print("Lien détecté")  # Debug
                 try:
                     await message.delete()
-                    await message.channel.send(f"{message.author.mention}, les liens ne sont pas autorisés ici. 🚫", delete_after=5)
+                    await message.channel.send(
+                        f"{message.author.mention}, les liens ne sont pas autorisés ici. 🚫", delete_after=5
+                    )
                 except discord.Forbidden:
                     print("Permission manquante pour supprimer un message.")
                 except discord.HTTPException:
