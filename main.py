@@ -4,16 +4,23 @@ import os
 import asyncio
 import json
 
-# Charger la config
+# Charger la config (pour le préfixe seulement)
 with open("config.json", "r", encoding="utf-8") as f:
     config = json.load(f)
+
+# Récupérer le token depuis la variable d'environnement
+TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+
+if TOKEN is None:
+    print("Erreur : la variable d'environnement DISCORD_BOT_TOKEN n'est pas définie.")
+    exit(1)
 
 # Intents
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 
-# Création du bot
+# Création du bot, on récupère le préfixe dans config.json toujours (ou tu peux le remplacer aussi par une variable d'environnement)
 bot = commands.Bot(
     command_prefix=config.get("prefix", "+"),
     help_command=None,
@@ -38,6 +45,6 @@ async def on_ready():
 async def main():
     await load_cogs()
     async with bot:
-        await bot.start(config["token"])
+        await bot.start(TOKEN)
 
 asyncio.run(main())
