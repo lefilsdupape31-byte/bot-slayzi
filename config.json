@@ -1,0 +1,11 @@
+{
+  "token": "${DISCORD_TOKEN}",
+  "prefix": "+",
+  "presence": "Serveur communautaire",
+  "guild_id": 0,
+  "mod_log_channel_id": 0,
+  "welcome_channel_id": 0,
+  "reaction_role_message_id": 0,
+  "reaction_role_mappings": {},
+  "owner_id": 0
+}
