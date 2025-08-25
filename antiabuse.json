@@ -1,0 +1,66 @@
+{
+    "owners": [
+        606798814912970767
+    ],
+    "guilds": {
+        "123456789012345678": {
+            "whitelist": [],
+            "log_channel": null,
+            "limits": {
+                "mute": {
+                    "count": 3,
+                    "seconds": 10
+                },
+                "move": {
+                    "count": 5,
+                    "seconds": 10
+                },
+                "disconnect": {
+                    "count": 3,
+                    "seconds": 10
+                },
+                "role_add": {
+                    "count": 5,
+                    "seconds": 10
+                },
+                "role_remove": {
+                    "count": 5,
+                    "seconds": 10
+                }
+            }
+        },
+        "1388508292694937680": {
+            "whitelist": [
+                606798814912970767,
+                1398067421285318786
+            ],
+            "log_channel": 1403733519141965905,
+            "limits": {
+                "mute": {
+                    "count": 2,
+                    "seconds": 180
+                },
+                "move": {
+                    "count": 5,
+                    "seconds": 10
+                },
+                "disconnect": {
+                    "count": 3,
+                    "seconds": 10
+                },
+                "role_add": {
+                    "count": 1,
+                    "seconds": 240
+                },
+                "role_remove": {
+                    "count": 5,
+                    "seconds": 10
+                },
+                "kick": {
+                    "count": 1,
+                    "seconds": 600
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "embed_title": "Support",
+    "embed_description": "➜ Voici le salon support ! Vous avez à votre disposition plusieurs types de tickets :",
+    "embed_image": "https://i.pinimg.com/736x/a5/98/ad/a598ad37bfba1b9cd3c7fc1a885ada48.jpg",
+    "categories": {
+        "👑 Ticket Couronne": ["Demande de Fusion\nDemande de Partenariat\nProposer des services de fournisseur", "👑"],
+        "🔹 Ticket Gestion Staff": ["Demander un rank-up\nToute question / renseignement\nRentrer dans le staff", "🔹"],
+        "🚨 Ticket Gestion Abus": ["Signaler une pub mp\nSignaler un membre du serveur\nAbus de permissions d'un staff", "🚨"],
+        "💰 Ticket Gestion Coin's": ["Signaler une panne du bot casino\nSignaler un défaut du bot casino\nProblème avec votre gain", "💰"]
+    },
+    "ping_role_id": null
+}
